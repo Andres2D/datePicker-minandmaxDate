@@ -1,59 +1,58 @@
 let c = console.log;
 
+let limitDay = 2;
 
-function newConf(fecha1){
-    c("fecha1 value: " + fecha1);
+
+function newConf(fecha1) {
     $('#finalDate').datepicker({
+        format: 'yyyy-mm-dd',
         uiLibrary: 'bootstrap',
-        maxDate: new Date(lastDate($("#initialDate").val())), //lastDate($("#initialDate").val())),  //'11/05/2018'
-        minDate: new Date(fecha1)//fecha1) //'11/03/2018'
+        maxDate: new Date(lastDate($("#initialDate").val(),limitDay).replace(/-/g, '\/')), //lastDate($("#initialDate").val())),  //'11/05/2018'
+        minDate: new Date(fecha1.replace(/-/g, '\/')) //fecha1) //'11/03/2018'
     });
 
     $('#finalDate').val(fecha1);
-    
+
 }
 
-function lastDate(fecha) {
+function lastDate(fecha,limit) {
 
-    c("Initial date: " + fecha);
+    let num = parseInt(fecha.substring(8, 10));
 
-     let num = parseInt(fecha.substring(3, 6));
+    let dateSelected = new Date(fecha.replace(/-/g, '\/'));
 
-     let dateSelected = new Date(fecha);
+    let today = new Date();
 
-     let today = new Date();
+    if (dateSelected.getMonth() == today.getMonth()) {
 
-     if(dateSelected.getMonth() == today.getMonth()){
+        (dateSelected.getDate() + limit) > today.getDate() ? dateSelected.setDate(today.getDate()) : dateSelected.setDate(num + limit);
 
-        (dateSelected.getDate() + 2) > today.getDate() ? dateSelected.setDate(today.getDate()) : dateSelected.setDate(num + 2);
+    } else if (dateSelected.getMonth() < today.getMonth()) {
+        dateSelected.setDate(num + limit);
+    }
 
-     } else if(dateSelected.getMonth() < today.getMonth()) {
-        dateSelected.setDate(num + 2);
-     }
+    let finalDate = dateSelected.getFullYear() + "-" + (dateSelected.getMonth() + 1) + "-" + dateSelected.getDate();
 
-     let finalDate = (dateSelected.getMonth() + 1) + "/" + dateSelected.getDate() + "/" + dateSelected.getFullYear();
+    $("#finalDate").val(finalDate);
 
-     c("Final date: " + finalDate);
-
-     $("#finalDate").val(finalDate);
-
-     return finalDate;
+    return finalDate;
 }
 
 $(document).ready(function () {
-    
+
     $('#initialDate').datepicker({
-            uiLibrary: 'bootstrap'
+        format: 'yyyy-mm-dd',
+        uiLibrary: 'bootstrap'
     });
 
-    newConf($('#initialDate').val()); 
-        
+    newConf($('#initialDate').val());
+
 });
 
-    function hacer(obj){
-        $('#finalDate').datepicker("destroy");
-        newConf($(obj).val());
-       // 
-    }
+function hacer(obj) {
+    $('#finalDate').datepicker("destroy");
+    newConf($(obj).val());
+    // 
+}
 
 ////
