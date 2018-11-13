@@ -42,7 +42,8 @@ $(document).ready(function () {
 
     $('#initialDate').datepicker({
         format: 'yyyy-mm-dd',
-        uiLibrary: 'bootstrap'
+        uiLibrary: 'bootstrap',
+        maxDate: new Date()
     });
 
     newConf($('#initialDate').val());
