@@ -7,7 +7,7 @@ function newConf(fecha1) {
     $('#finalDate').datepicker({
         format: 'yyyy-mm-dd',
         uiLibrary: 'bootstrap',
-        maxDate: new Date(lastDate($("#initialDate").val(),limitDay).replace(/-/g, '\/')), //lastDate($("#initialDate").val())),  //'11/05/2018'
+        maxDate: new Date(lastDate($("#initialDate").val(),limitDay-1).replace(/-/g, '\/')), //lastDate($("#initialDate").val())),  //'11/05/2018'
         minDate: new Date(fecha1.replace(/-/g, '\/')) //fecha1) //'11/03/2018'
     });
 
