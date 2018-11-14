@@ -16,8 +16,10 @@ function newConf(fecha1) {
 }
 
 function lastDate(fecha,limit) {
+    
+    let pDate = new Date(fecha.replace(/-/g, '\/'));
 
-    let num = parseInt(fecha.substring(8, 10));
+    let num = pDate.getDate();
 
     let dateSelected = new Date(fecha.replace(/-/g, '\/'));
 
