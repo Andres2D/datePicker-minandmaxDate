@@ -15,6 +15,7 @@ function newConf(fecha1) {
 
 }
 
+/*
 function lastDate(fecha,limit) {
     
     let pDate = new Date(fecha.replace(/-/g, '\/'));
@@ -38,6 +39,27 @@ function lastDate(fecha,limit) {
     $("#finalDate").val(finalDate);
 
     return finalDate;
+}
+*/
+
+function lastDate(fecha, limit) {
+
+   let dateSelected = new Date(fecha.replace(/-/g, '\/'));
+
+   let today = new Date();
+
+   let limitDate = dateSelected.getDate() + limit;
+
+   if (dateSelected.getMonth() === today.getMonth() && limitDate > today.getDate())
+        dateSelected.setDate(today.getDate());
+    else
+       dateSelected.setDate(limitDate);
+
+   let finalDate = dateSelected.getFullYear() + "-" + (dateSelected.getMonth() + 1) + "-" + dateSelected.getDate();
+
+   $("#finalDate").val(finalDate);
+
+   return finalDate;
 }
 
 $(document).ready(function () {
