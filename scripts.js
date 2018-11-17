@@ -77,6 +77,7 @@ $(document).ready(function () {
 function hacer(obj) {
     $('#finalDate').datepicker("destroy");
     newConf($(obj).val());
+    dis();
     // 
 }
 
