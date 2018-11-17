@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,13 +23,17 @@
     </div>
     <div class="col-md-3">
         <h3>Select Initial Day</h3>
-        <input id="initialDate" width="270" type="text" value="2018-11-11" onchange="hacer(this)" />
+        <input id="initialDate" width="270" type="text" value="2018-11-11" onchange="hacer(this)" readonly />
     </div>
-    <div class="col-md-3">
+    <div id="pick" class="col-md-3">
         <h3>Select Final Day</h3>
-        <input id="finalDate" width="270" type="text" value="2018-11-11" />
+        <input id="finalDate" width="270" type="text" value="2018-11-11" readonly />
     </div>
     <div class="col-md-3">
+        <br>
+        <br>
+        <p>Disable final day</p>
+        <input type="checkbox" name="" id="check" onchange="dis()">
     </div>
 
 
