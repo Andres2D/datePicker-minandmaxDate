@@ -80,4 +80,13 @@ function hacer(obj) {
     // 
 }
 
+function dis(){
+    if($('#check').prop('checked')){
+       $('#pick').find('span').off('click');
+    }else{
+        $('#finalDate').datepicker("destroy");
+        newConf($('#initialDate').val());
+    }
+}
+
 ////
